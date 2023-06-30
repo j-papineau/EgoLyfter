@@ -11,6 +11,9 @@
 		5D44B42E2A4CB647002120E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44B42D2A4CB647002120E3 /* ContentView.swift */; };
 		5D44B4302A4CB648002120E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D44B42F2A4CB648002120E3 /* Assets.xcassets */; };
 		5D44B4332A4CB648002120E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D44B4322A4CB648002120E3 /* Preview Assets.xcassets */; };
+		5D44B43A2A4CB6A7002120E3 /* TabOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44B4392A4CB6A7002120E3 /* TabOneView.swift */; };
+		5D44B43C2A4CB6C3002120E3 /* TabTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44B43B2A4CB6C3002120E3 /* TabTwoView.swift */; };
+		5D44B4622A4E85A1002120E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D44B4612A4E85A1002120E3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		5D44B42D2A4CB647002120E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5D44B42F2A4CB648002120E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D44B4322A4CB648002120E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5D44B4392A4CB6A7002120E3 /* TabOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOneView.swift; sourceTree = "<group>"; };
+		5D44B43B2A4CB6C3002120E3 /* TabTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTwoView.swift; sourceTree = "<group>"; };
+		5D44B4612A4E85A1002120E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +59,10 @@
 			children = (
 				5D44B42B2A4CB647002120E3 /* EgoLyfterApp.swift */,
 				5D44B42D2A4CB647002120E3 /* ContentView.swift */,
+				5D44B4392A4CB6A7002120E3 /* TabOneView.swift */,
+				5D44B43B2A4CB6C3002120E3 /* TabTwoView.swift */,
 				5D44B42F2A4CB648002120E3 /* Assets.xcassets */,
+				5D44B4612A4E85A1002120E3 /* GoogleService-Info.plist */,
 				5D44B4312A4CB648002120E3 /* Preview Content */,
 			);
 			path = EgoLyfter;
@@ -127,6 +136,7 @@
 			files = (
 				5D44B4332A4CB648002120E3 /* Preview Assets.xcassets in Resources */,
 				5D44B4302A4CB648002120E3 /* Assets.xcassets in Resources */,
+				5D44B4622A4E85A1002120E3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D44B42E2A4CB647002120E3 /* ContentView.swift in Sources */,
+				5D44B43A2A4CB6A7002120E3 /* TabOneView.swift in Sources */,
 				5D44B42C2A4CB647002120E3 /* EgoLyfterApp.swift in Sources */,
+				5D44B43C2A4CB6C3002120E3 /* TabTwoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
