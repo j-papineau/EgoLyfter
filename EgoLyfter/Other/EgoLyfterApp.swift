@@ -13,7 +13,9 @@ struct EgoLyfterApp: App {
     
     init(){
         FirebaseApp.configure()
-    }
+    } //not needed?
+    
+   // @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     
     var body: some Scene {

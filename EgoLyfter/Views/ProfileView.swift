@@ -18,18 +18,36 @@ struct ProfileView: View {
             ScrollView {
                 
                 VStack{
-                    
-                    ProfileCardView(username: "Test User", email: "test@gmail.com", imgName: "avacado-maki", joinedYear: "1999", bgColor: Color.clear)
-                        .offset(y:10)
-                    
-                    List{
-                        Text("Something").foregroundColor(Color.black)
+                    if let user = viewModel.user{
+                        ProfileCardView(username: user.name,
+                                        email: user.email,
+                                        imgName: "personcircle",
+                                        joined: user.joined,
+                                        bgColor: Color.clear)
+                            .offset(y:10)
+                        
+                        List{
+                            Text("Something").foregroundColor(Color.black)
+                        }
+                        FormButton(title: "Log Out", bgColor: Color("DemonRedLight")){
+                            viewModel.logOut()
+                        }
+                    }else{
+                        //loading state
+                        Spacer()
+                        Text("Loading Profile...")
+                        
                     }
+                    
+                   
+                    
                     Spacer()
                     
                 }.navigationTitle("Your Profile")
                 
             }
+        }.onAppear{
+            viewModel.fetchUser()
         }
     }
 }

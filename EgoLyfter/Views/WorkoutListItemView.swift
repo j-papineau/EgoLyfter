@@ -9,22 +9,22 @@ import SwiftUI
 
 struct WorkoutListItemView: View {
    
-    var title:String
-    var bgColor:Color
-    var createdDate:String
-    var lastDate:String
+    
+    let item: WorkoutListItem
+    //@StateObject var viewModel = WorkoutListItemViewModel()
+    @StateObject var viewModel = WorkoutListItemViewModel()
     
     var body: some View {
         
         ZStack{
             
-            Rectangle().foregroundColor(bgColor).frame(height: 100)
+            //Rectangle().foregroundColor(bgColor).frame(height: 100)
             
             HStack{
                 //icon
                 Image(systemName: "scalemass").resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 50)
+                    .frame(width: 30, height: 50)
                     .padding(.leading, 10)
                 
                 Spacer()
@@ -32,31 +32,45 @@ struct WorkoutListItemView: View {
                 //title and subtitle
                 VStack{
                     Spacer()
-                    Text(title).font(.title).multilineTextAlignment(.leading).bold()
-                    Text("created: " + createdDate)
+                    Text(item.title)
+                        .font(.system(size: 20))
+                        .multilineTextAlignment(.leading).bold()
+                    Text("created: " + "\(Date(timeIntervalSince1970: item.createdDate).formatted(date: .abbreviated, time: .shortened))")
+                        //.font(.system(size:15))
+                        .font(.footnote)
+                        .foregroundColor(Color(.secondaryLabel))
                         .multilineTextAlignment(.leading)
-                    Text("last done: " + lastDate)//probably a computed property
+                        .italic()
+                   // Text("last done: " + lastDate)//probably a computed property
                     Spacer()
                 }.padding(.leading, 10)
                 
-               
+               Spacer()
                 
-               
+                //fav button
+
+                Button{
+                    viewModel.toggleFav(item: item)
+                    
+                }label:{
+                   
+                    //set fav on click
+                    
+                    Image(systemName: item.isFav ? "star.fill" : "star")
+                        .foregroundColor(Color("DemonRedLight"))
+                    
+                }
                 
                 //info button to view
-                
                 Spacer()
                 
                 Button{
+                    //do something
                     
                 }label:{
-                    Image(systemName: "info.circle").resizable().aspectRatio(contentMode: .fit).frame(height: 25).padding(.trailing, 20)
+                    Image(systemName: "square.and.pencil")
                 }
-                
-            }.frame(height: 100)//end main HStack
-            
-            
-            
+            }.frame(height: 50)//end main HStack
         }
         
     }
@@ -64,6 +78,6 @@ struct WorkoutListItemView: View {
 
 struct WorkoutListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutListItemView(title: "Test Title", bgColor: Color.green.opacity(0.2), createdDate: "01/02/15", lastDate: "01/05/16")
+        WorkoutListItemView(item: WorkoutListItem(id: "123", title: "Testing", createdDate: Date().timeIntervalSince1970, isFav: true))
     }
 }

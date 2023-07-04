@@ -4,8 +4,10 @@
 //
 //  Created by Joel on 6/30/23.
 //
-
+import FirebaseAuth
+import FirebaseFirestore
 import Foundation
+
 
 class NewWorkoutViewModel: ObservableObject {
     
@@ -13,10 +15,38 @@ class NewWorkoutViewModel: ObservableObject {
     @Published var date = Date()
     @Published var showAlert = false
     
-    
+    init(){}
     
     func save(){
-        print("Saving workout title and shit")
+        guard canSave else{
+            return
+        }
+        
+        //get current user id
+        guard let uId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        //create model
+        let newId = UUID().uuidString
+        //placeholder issue??
+        //let now = Date()
+        let newItem = WorkoutListItem(id: newId,
+                                    title: title,
+                                      createdDate: date.timeIntervalSince1970,
+                                    isFav: false)
+        
+        //save model to db
+        let db = Firestore.firestore()
+        
+        db.collection("users")
+            .document(uId)
+            .collection("customWorkouts")
+            .document(newId)
+            .setData(newItem.asDictionary())
+        
+        
+        
     }
     
     var canSave: Bool {
@@ -28,7 +58,7 @@ class NewWorkoutViewModel: ObservableObject {
         return true
         
     }
-    init(){}
+   
     
     
 }

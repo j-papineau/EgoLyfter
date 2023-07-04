@@ -28,6 +28,15 @@ struct MainView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
+            HistoryView()
+            //maybe make this part of home
+                .tabItem{
+                    Label("History", systemImage: "clock")
+                }
+            AnalyticsView()
+                .tabItem{
+                    Label("Analytics", systemImage: "chart.xyaxis.line")
+                }
             SearchView()
                 .tabItem{
                     Label("Explore", systemImage: "magnifyingglass")
@@ -36,6 +45,7 @@ struct MainView: View {
                 .tabItem{
                     Label("Account", systemImage: "person.circle")
                 }
+           
             
             
         }

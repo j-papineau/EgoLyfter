@@ -12,7 +12,7 @@ struct ProfileCardView: View {
     let username:String
     let email:String
     let imgName:String
-    let joinedYear:String
+    let joined:TimeInterval
     let bgColor:Color
     
     @State var selected: Bool = false
@@ -25,16 +25,12 @@ struct ProfileCardView: View {
                 //Image on tap present option to change or upload new
                 
                 
-                    Image("avocado-maki").resizable()
+                    Image(systemName: "person.circle").resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height:100)
                         .cornerRadius(100)
                         .padding()
-                        .onTapGesture {
-                            selected.toggle()
-                        }
-                        .scaleEffect(self.selected ? 2 : 1)
-                        .animation(.easeInOut, value: selected)
+                        .foregroundColor(Color.gray)
                 
                     
                 
@@ -56,7 +52,7 @@ struct ProfileCardView: View {
                         .multilineTextAlignment(.leading)
                         
                         .foregroundColor(Color.gray)
-                    Text("You joined: " + joinedYear)
+                    Text("You joined: " + Date(timeIntervalSince1970: joined).formatted(date: .abbreviated, time: .omitted))
                         .font(.system(size:10))
                         .multilineTextAlignment(.center)
                         .padding([.top, .leading], 10.0)
@@ -90,6 +86,6 @@ struct ProfileCardView: View {
 
 struct ProfileCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileCardView(username: "Joel", email: "test@gmail.com", imgName: "avocado-maki", joinedYear: "1999", bgColor: Color.gray)
+        ProfileCardView(username: "Joel", email: "test@gmail.com", imgName: "avocado-maki", joined: 999999999, bgColor: Color.gray)
     }
 }
