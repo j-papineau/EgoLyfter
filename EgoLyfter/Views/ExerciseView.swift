@@ -20,17 +20,32 @@ struct ExerciseView: View, Identifiable {
         
         //TODO adjust list type format
         //maybe foreach is causing issue
+        //try without section view
+        //TODO maybe try nav view with title $exercisename
         
         VStack {
-            List{
-                    Section(header: ListHeader(title: $exerciseName), footer: ListFooter(sets: $sets)){
-                        ForEach(sets) { set in
-                            ExerciseSetView(id: set.id, weight: set.weight, reps: set.reps)
-                        }
-                    }
+            
+//            List{
+//                    Section(header: ListHeader(title: $exerciseName), footer: ListFooter(sets: $sets)){
+//                        ForEach(sets) { set in
+//                            ExerciseSetView(id: set.id, weight: set.weight, reps: set.reps)
+//                        }
+//                    }
+//
+//            }
+            
+            ListHeader(title: $exerciseName)
+            List(sets){ item in
+                
+                ExerciseSetView(id: item.id, weight: item.weight, reps: item.reps)
+                
             }
-        }.aspectRatio(contentMode: .fit)
-            .fixedSize(horizontal: false, vertical: true)
+            ListFooter(sets: $sets)
+            
+            Spacer()
+        }
+        
+        //.fixedSize(horizontal: false, vertical: true)
     }//end view
 }//end struct
 

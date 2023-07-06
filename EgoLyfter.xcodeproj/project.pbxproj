@@ -46,6 +46,7 @@
 		5D44B4B22A54F38E002120E3 /* WorkoutEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44B4B12A54F38E002120E3 /* WorkoutEditorViewModel.swift */; };
 		5D44B4B42A54F96D002120E3 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44B4B32A54F96D002120E3 /* ExerciseView.swift */; };
 		5D44B4B62A54FA63002120E3 /* ExerciseSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44B4B52A54FA63002120E3 /* ExerciseSetView.swift */; };
+		5D7A4B742A5673DA0052CD7F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B732A5673DA0052CD7F /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		5D44B4B12A54F38E002120E3 /* WorkoutEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditorViewModel.swift; sourceTree = "<group>"; };
 		5D44B4B32A54F96D002120E3 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		5D44B4B52A54FA63002120E3 /* ExerciseSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetView.swift; sourceTree = "<group>"; };
+		5D7A4B732A5673DA0052CD7F /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				5D44B4AD2A54F369002120E3 /* WorkoutEditorView.swift */,
 				5D44B4B32A54F96D002120E3 /* ExerciseView.swift */,
 				5D44B4B52A54FA63002120E3 /* ExerciseSetView.swift */,
+				5D7A4B732A5673DA0052CD7F /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				5D44B4872A4E8C37002120E3 /* MainViewModel.swift in Sources */,
 				5D44B47B2A4E8B9C002120E3 /* WorkoutListItemView.swift in Sources */,
 				5D44B48D2A4E8C5B002120E3 /* LoginViewModel.swift in Sources */,
+				5D7A4B742A5673DA0052CD7F /* ErrorView.swift in Sources */,
 				5D44B4A42A53D739002120E3 /* AppDelegate.swift in Sources */,
 				5D44B4892A4E8C42002120E3 /* ProfileViewModel.swift in Sources */,
 				5D44B4852A4E8C1E002120E3 /* WorkoutListViewModel.swift in Sources */,

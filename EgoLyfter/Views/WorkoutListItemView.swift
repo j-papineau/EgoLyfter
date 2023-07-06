@@ -16,62 +16,65 @@ struct WorkoutListItemView: View {
     
     var body: some View {
         
-        ZStack{
-            
-            //Rectangle().foregroundColor(bgColor).frame(height: 100)
-            
+ 
+ //       NavigationView {
             HStack{
-                //icon
-                Image(systemName: "scalemass").resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 50)
-                    .padding(.leading, 10)
-                
-                Spacer()
-                
-                //title and subtitle
-                VStack{
                     Spacer()
-                    Text(item.title)
-                        .font(.system(size: 20))
-                        .multilineTextAlignment(.leading).bold()
-                    Text("created: " + "\(Date(timeIntervalSince1970: item.createdDate).formatted(date: .abbreviated, time: .shortened))")
-                        //.font(.system(size:15))
-                        .font(.footnote)
-                        .foregroundColor(Color(.secondaryLabel))
-                        .multilineTextAlignment(.leading)
-                        .italic()
-                   // Text("last done: " + lastDate)//probably a computed property
-                    Spacer()
-                }.padding(.leading, 10)
-                
-               Spacer()
-                
-                //fav button
-
-                Button{
-                    viewModel.toggleFav(item: item)
                     
-                }label:{
-                   
-                    //set fav on click
+                    //title and subtitle
+                    VStack{
+                        Spacer()
+                        Text(item.title)
+                            .font(.system(size: 20))
+                            .multilineTextAlignment(.leading).bold()
+                        Text("created: " + "\(Date(timeIntervalSince1970: item.createdDate).formatted(date: .abbreviated, time: .shortened))")
+                            //.font(.system(size:15))
+                            .font(.footnote)
+                            .foregroundColor(Color(.secondaryLabel))
+                            .multilineTextAlignment(.leading)
+                            .italic()
+                       // Text("last done: " + lastDate)//probably a computed property
+                        Spacer()
+                    }.padding(.leading, 10)
                     
-                    Image(systemName: item.isFav ? "star.fill" : "star")
-                        .foregroundColor(Color("DemonRedLight"))
-                    
-                }
+                    Button{
+                        viewModel.toggleFav(item: item)
+                        print("fav")
+                        
+                    }label:{
+                        //set fav on click
+                        Image(systemName: item.isFav ? "star.fill" : "star")
+                            .foregroundColor(Color("DemonRedLight"))
+                    }.padding()
+                    .buttonStyle(.plain)
                 
-                //info button to view
-                Spacer()
-                
-                Button{
-                    //do something
+//                NavigationLink(destination: WorkoutEditorView()){
+//                    //opens editor
+//                    Image(systemName: "square.and.pencil")
+//                }.padding()
+//
+//                NavigationLink(destination: ActiveWorkoutIDKSomething()){
+//                    Image(systemName: "play")
+//                }
                     
-                }label:{
-                    Image(systemName: "square.and.pencil")
-                }
-            }.frame(height: 50)//end main HStack
-        }
+//                    Button{
+//                        //open editor
+//                        print("edit")
+//
+//                    }label:{
+//                        Image(systemName: "square.and.pencil")
+//                    }.padding()
+//                        .buttonStyle(.plain)
+//
+//                    Button{
+//                        //do workout
+//                        print("play")
+//                    } label: {
+//                        Image(systemName: "play")
+//                    }.padding()
+//                        .buttonStyle(.plain)
+            }.frame(height: 50) //end hstack
+//        }//end nav view
         
     }
 }
