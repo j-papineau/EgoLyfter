@@ -17,7 +17,7 @@ struct ExerciseSetView: View, Identifiable {
     var body: some View {
         VStack{
             HStack{
-                Text("Set \(id)").font(.headline).fontWeight(.heavy).multilineTextAlignment(.center)
+                Text("Set \(id + 1)").font(.headline).fontWeight(.heavy).multilineTextAlignment(.center)
                 Spacer()
             }
             

@@ -48,31 +48,7 @@ struct WorkoutListItemView: View {
                     }.padding()
                     .buttonStyle(.plain)
                 
-//                NavigationLink(destination: WorkoutEditorView()){
-//                    //opens editor
-//                    Image(systemName: "square.and.pencil")
-//                }.padding()
-//
-//                NavigationLink(destination: ActiveWorkoutIDKSomething()){
-//                    Image(systemName: "play")
-//                }
-                    
-//                    Button{
-//                        //open editor
-//                        print("edit")
-//
-//                    }label:{
-//                        Image(systemName: "square.and.pencil")
-//                    }.padding()
-//                        .buttonStyle(.plain)
-//
-//                    Button{
-//                        //do workout
-//                        print("play")
-//                    } label: {
-//                        Image(systemName: "play")
-//                    }.padding()
-//                        .buttonStyle(.plain)
+
             }.frame(height: 50) //end hstack
 //        }//end nav view
         

@@ -56,7 +56,7 @@ struct WorkoutListView: View {
                                             
                                         }label: {
                                             Image(systemName: "square.and.pencil")
-                                        }
+                                        }.buttonStyle(.plain)
                                         
                                     }//end hstack
                             //    }//end navlink

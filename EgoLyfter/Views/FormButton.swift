@@ -23,7 +23,7 @@ struct FormButton: View {
             //action
             action()
             
-        } label: {
+        }label: {
             
             ZStack {
                 
@@ -36,7 +36,7 @@ struct FormButton: View {
                 
             }.frame(width: 300, height: 50)
                 .padding()
-        }
+        }.buttonStyle(.plain) 
         
         
     }
