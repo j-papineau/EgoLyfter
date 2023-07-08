@@ -113,7 +113,7 @@ struct WorkoutEditorView: View {
 struct WorkoutEditorView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutEditorView(userId: "7eHaOMVXMLgQIH748yLPVESmZjj2",
-                          listId:"522CC458-1186-425E-8616-A1338E19D274",
+                          listId: "BA6E62DD-E3EC-4AE9-A440-838E5C0BB607",
                           showingWorkoutEditor: Binding(get: {return true}, set: {_ in}))
         
     }

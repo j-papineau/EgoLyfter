@@ -50,6 +50,9 @@
 		5D7A4B762A56F5AD0052CD7F /* CutomWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B752A56F5AD0052CD7F /* CutomWorkout.swift */; };
 		5D7A4B782A57C6BE0052CD7F /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B772A57C6BE0052CD7F /* Exercise.swift */; };
 		5D7A4B7A2A57C7D40052CD7F /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B792A57C7D40052CD7F /* ExerciseViewModel.swift */; };
+		5D7A4B7C2A585B2D0052CD7F /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B7B2A585B2D0052CD7F /* ToolbarButton.swift */; };
+		5D7A4B7E2A59222A0052CD7F /* NewEmptyWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B7D2A59222A0052CD7F /* NewEmptyWorkoutView.swift */; };
+		5D7A4B802A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B7F2A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,9 @@
 		5D7A4B752A56F5AD0052CD7F /* CutomWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutomWorkout.swift; sourceTree = "<group>"; };
 		5D7A4B772A57C6BE0052CD7F /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		5D7A4B792A57C7D40052CD7F /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
+		5D7A4B7B2A585B2D0052CD7F /* ToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButton.swift; sourceTree = "<group>"; };
+		5D7A4B7D2A59222A0052CD7F /* NewEmptyWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmptyWorkoutView.swift; sourceTree = "<group>"; };
+		5D7A4B7F2A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmptyWorkoutViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +174,8 @@
 				5D44B4B32A54F96D002120E3 /* ExerciseView.swift */,
 				5D44B4B52A54FA63002120E3 /* ExerciseSetView.swift */,
 				5D7A4B732A5673DA0052CD7F /* ErrorView.swift */,
+				5D7A4B7B2A585B2D0052CD7F /* ToolbarButton.swift */,
+				5D7A4B7D2A59222A0052CD7F /* NewEmptyWorkoutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +192,7 @@
 				5D44B4902A4E8C80002120E3 /* WorkoutListItemViewModel.swift */,
 				5D44B4B12A54F38E002120E3 /* WorkoutEditorViewModel.swift */,
 				5D7A4B792A57C7D40052CD7F /* ExerciseViewModel.swift */,
+				5D7A4B7F2A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -298,9 +307,11 @@
 				5D44B4B22A54F38E002120E3 /* WorkoutEditorViewModel.swift in Sources */,
 				5D7A4B782A57C6BE0052CD7F /* Exercise.swift in Sources */,
 				5D44B42E2A4CB647002120E3 /* MainView.swift in Sources */,
+				5D7A4B7C2A585B2D0052CD7F /* ToolbarButton.swift in Sources */,
 				5D44B4712A4E8B38002120E3 /* ProfileView.swift in Sources */,
 				5D44B49F2A511FCB002120E3 /* SearchView.swift in Sources */,
 				5D44B42C2A4CB647002120E3 /* EgoLyfterApp.swift in Sources */,
+				5D7A4B7E2A59222A0052CD7F /* NewEmptyWorkoutView.swift in Sources */,
 				5D44B48B2A4E8C4F002120E3 /* NewWorkoutViewModel.swift in Sources */,
 				5D44B4732A4E8B4E002120E3 /* WorkoutListView.swift in Sources */,
 				5D44B48F2A4E8C69002120E3 /* RegisterViewModel.swift in Sources */,
@@ -314,6 +325,7 @@
 				5D44B4A42A53D739002120E3 /* AppDelegate.swift in Sources */,
 				5D44B4892A4E8C42002120E3 /* ProfileViewModel.swift in Sources */,
 				5D44B4852A4E8C1E002120E3 /* WorkoutListViewModel.swift in Sources */,
+				5D7A4B802A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift in Sources */,
 				5D44B4952A4F7D5A002120E3 /* FormButton.swift in Sources */,
 				5D44B4A62A548976002120E3 /* HistoryView.swift in Sources */,
 				5D44B4AE2A54F369002120E3 /* WorkoutEditorView.swift in Sources */,

@@ -70,7 +70,20 @@ class WorkoutEditorViewModel: ObservableObject {
     }
     
     
-    
+    func save() {
+        //validate data
+        //can save
+        
+        //get user id
+        
+        //create model
+        
+        //save to db
+        
+        
+        
+        
+    }
     
     
     }//end class

@@ -39,15 +39,19 @@ struct WorkoutListView: View {
                                 
                                // NavigationLink(destination: WorkoutEditorView(listId: item.id)){
                                     
-                                    HStack {
+                                HStack {
                                         WorkoutListItemView(item: item)
                                             .swipeActions{
                                                 Button("Delete"){
                                                     viewModel.delete(id: item.id)
                                                 }.foregroundColor(Color.red)
                                         }.tint(.red)
+                                    
+                                    HStack(spacing: 30){
+                                        
                                         Button{
                                             //open editor
+                                            
                                             
                                             viewModel.showingWorkoutEditor = true
                                             viewModel.workoutEditorId = item.id
@@ -57,6 +61,19 @@ struct WorkoutListView: View {
                                         }label: {
                                             Image(systemName: "square.and.pencil")
                                         }.buttonStyle(.plain)
+                                        
+                                        
+                                        Button{
+                                            //play workout
+                                            print("playing workout:" + item.id)
+                                            
+                                        } label: {
+                                            
+                                            
+                                            Image(systemName: "play")
+                                        }.buttonStyle(.plain)
+                                    }
+                                    
                                         
                                     }//end hstack
                             //    }//end navlink
@@ -68,23 +85,34 @@ struct WorkoutListView: View {
                 
                 
             }
-            .navigationTitle("Your Lifts")
+            .navigationTitle("Your Lifts (templates)")
             .toolbar{
-                    Button{
-                      //add new
-                        viewModel.showingNewWorkoutView = true
-                    }label:{
-                        Image(systemName: "plus").foregroundColor(Color("DemonRedLight"))
-                    }
+                
+                Menu{
+                        
+                        Button{
+                          //add new
+                            //new template
+                            viewModel.showingNewWorkoutView = true
+                        }label:{
+                            Text("New Template").foregroundColor(Color("DemonRedLight"))
+                        }
                     
-//                    Button{
-//                        //settings??
-//                        ///idk tbh
-//                    }
-//                    label:{
-//                    Image(systemName: "slider.horizontal.3")
-//                            .foregroundColor(Color("DemonRed"))
-//                    }
+                        
+                    Button("Start Empty Workout"){
+                        
+                        //start empty workout (duh)
+                        
+                        
+                        
+                        
+                    }.buttonStyle(BorderedButtonStyle())
+                        
+                } label: {
+                    Image(systemName: "plus")
+                }
+                    
+                
                 
             }.sheet(isPresented: $viewModel.showingNewWorkoutView){
                 NewWorkoutView(newWorkoutPresented: $viewModel.showingNewWorkoutView)
