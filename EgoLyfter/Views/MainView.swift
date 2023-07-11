@@ -28,11 +28,11 @@ struct MainView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            HistoryView()
-            //maybe make this part of home
-                .tabItem{
-                    Label("History", systemImage: "clock")
-                }
+//            HistoryView()
+//            //maybe make this part of home
+//                .tabItem{
+//                    Label("History", systemImage: "clock")
+//                }
             AnalyticsView()
                 .tabItem{
                     Label("Analytics", systemImage: "chart.xyaxis.line")
