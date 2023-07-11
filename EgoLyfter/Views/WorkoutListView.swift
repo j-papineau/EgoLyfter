@@ -9,11 +9,17 @@ import SwiftUI
 
 //THIS is the home view
 
+enum ListSection:String, CaseIterable{
+    case templates = "Templates"
+    case history = "History"
+}
+
 struct WorkoutListView: View {
     
     @StateObject var viewModel: WorkoutListViewModel
     @FirestoreQuery var items: [WorkoutListItem]
     @State var showingWorkout: Bool = false
+    @State var segmentSelection: ListSection = .templates
     
     private var userId: String
     
@@ -33,11 +39,18 @@ struct WorkoutListView: View {
                
                 VStack {
                     //gotta get the value from here
-                    SegmentedControlView()
+                  
+                   //top selection thing
+                    Picker("", selection: $segmentSelection){
+                        ForEach(ListSection.allCases, id: \.self){option in
+                            Text(option.rawValue)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .padding()
+                    
                     
                     NavigationView {
                         
-                       
                         
                         List(items) {item in
                                 
@@ -93,7 +106,7 @@ struct WorkoutListView: View {
                 
                 
             }
-            .navigationTitle("Your Lifts (templates)")
+            .navigationTitle("Home")
             .toolbar{
                 
                 Menu{
