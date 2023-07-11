@@ -10,6 +10,7 @@ import Foundation
 class WorkoutListViewModel: ObservableObject {
     
     @Published var showingNewWorkoutView = false
+    @Published var showingEmptyWorkoutView = false
     @Published var showingWorkoutEditor = false
     @Published var workoutEditorId = ""
     private let userId: String

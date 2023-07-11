@@ -31,55 +31,63 @@ struct WorkoutListView: View {
         NavigationView{
             VStack{
                
-                NavigationView {
-                    List(items) {item in
-                            
-                            HStack {
+                VStack {
+                    //gotta get the value from here
+                    SegmentedControlView()
+                    
+                    NavigationView {
+                        
+                       
+                        
+                        List(items) {item in
                                 
-                                
-                               // NavigationLink(destination: WorkoutEditorView(listId: item.id)){
-                                    
                                 HStack {
-                                        WorkoutListItemView(item: item)
-                                            .swipeActions{
-                                                Button("Delete"){
-                                                    viewModel.delete(id: item.id)
-                                                }.foregroundColor(Color.red)
-                                        }.tint(.red)
                                     
-                                    HStack(spacing: 30){
-                                        
-                                        Button{
-                                            //open editor
-                                            
-                                            
-                                            viewModel.showingWorkoutEditor = true
-                                            viewModel.workoutEditorId = item.id
-                                            print("editor on id:" + item.id)
-                                            
-                                            
-                                        }label: {
-                                            Image(systemName: "square.and.pencil")
-                                        }.buttonStyle(.plain)
-                                        
-                                        
-                                        Button{
-                                            //play workout
-                                            print("playing workout:" + item.id)
-                                            
-                                        } label: {
-                                            
-                                            
-                                            Image(systemName: "play")
-                                        }.buttonStyle(.plain)
-                                    }
                                     
+                                   // NavigationLink(destination: WorkoutEditorView(listId: item.id)){
                                         
-                                    }//end hstack
-                            //    }//end navlink
+                                    HStack {
+                                            WorkoutListItemView(item: item)
+                                                .swipeActions{
+                                                    Button("Delete"){
+                                                        viewModel.delete(id: item.id)
+                                                    }.foregroundColor(Color.red)
+                                            }.tint(.red)
+                                        
+                                        HStack(spacing: 30){
+                                            
+                                            Button{
+                                                //open editor
+                                                
+                                                
+                                                viewModel.showingWorkoutEditor = true
+                                                viewModel.workoutEditorId = item.id
+                                                print("editor on id:" + item.id)
+                                                
+                                                
+                                            }label: {
+                                                Image(systemName: "square.and.pencil")
+                                            }.buttonStyle(.plain)
+                                            
+                                            
+                                            Button{
+                                                //play workout
+                                                print("playing workout:" + item.id)
+                                                
+                                            } label: {
+                                                
+                                                
+                                                Image(systemName: "play")
+                                            }.buttonStyle(.plain)
+                                        }
+                                        
+                                            
+                                        }//end hstack
+                                //    }//end navlink
+                                }
                             }
-                        }
-                    .listStyle(InsetListStyle())
+                        .listStyle(InsetListStyle())
+                    }
                 }
                    // .listStyle(PlainListStyle())
                 
@@ -103,6 +111,7 @@ struct WorkoutListView: View {
                         
                         //start empty workout (duh)
                         
+                        viewModel.showingEmptyWorkoutView = true
                         
                         
                         
@@ -119,6 +128,8 @@ struct WorkoutListView: View {
             }.fullScreenCover(isPresented: $viewModel.showingWorkoutEditor){
                 WorkoutEditorView(userId: userId, listId: viewModel.workoutEditorId, showingWorkoutEditor: $viewModel.showingWorkoutEditor)
                 
+            }.fullScreenCover(isPresented: $viewModel.showingEmptyWorkoutView){
+                NewEmptyWorkoutView(showingEmptyWorkoutView: $viewModel.showingEmptyWorkoutView)
             }
 //            .sheet(isPresented: $viewModel.showingWorkoutEditor){
 //                WorkoutEditorView(showingWorkoutEditor: $viewModel.showingWorkoutEditor, listId: viewModel.workoutEditorId)

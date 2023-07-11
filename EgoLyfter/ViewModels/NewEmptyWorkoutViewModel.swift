@@ -12,15 +12,28 @@ class NewEmptyWorkoutViewModel: ObservableObject {
     @Published var startDate = Date.now
     @Published var timeElapsed: Int = 0
     @Published var stopwatch: String = "00:00:00"
+    @Published var workoutTitle = "New Workout"
+    @Published var movements:[MovementView] = []
+    @Published var movementCount:Int = 0
+    
+    
     
     
     init(){
        
         
+    }
+    
+    
+    
+    func addMovement() -> Void {
         
+        movements.append(MovementView(id: movementCount))
+        movementCount += 1
         
     }
     
+    ///function that makes the timer work lol
     func convertToTime(_ seconds: Int) -> String {
         
         let hours = seconds / 3600

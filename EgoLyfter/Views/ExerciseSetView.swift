@@ -16,22 +16,20 @@ struct ExerciseSetView: View, Identifiable {
     
     var body: some View {
         VStack{
-            HStack{
-                Text("Set \(id + 1)").font(.headline).fontWeight(.heavy).multilineTextAlignment(.center)
-                Spacer()
-            }
+            
             
             HStack{
-                //set title
+               
                 
-                //reps
-                Stepper("\(reps) reps", value: $reps).fixedSize()
+                Text("\(id + 1)").font(.headline).fontWeight(.heavy).multilineTextAlignment(.center)
+                    .onTapGesture {
+                            self.hideKeyboard()
+                        }
+                
                 Spacer()
                 
-                //weight
-                Text("Weight:")
-                    .font(.footnote)
-                TextField("225", text: $weight)
+                
+                TextField("", text: $weight)
                     .keyboardType(.numberPad)
                     .onReceive(Just(weight)){newValue in
                         let filtered = newValue.filter {"01234567890".contains($0)}
@@ -40,9 +38,20 @@ struct ExerciseSetView: View, Identifiable {
                         }
                     }
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 100)
+                    .onTapGesture {
+                        self.hideKeyboard()
+                    }
                     //end on receive
                 Text("lbs")
                     .font(.footnote)
+                    .onTapGesture {
+                        self.hideKeyboard()
+                    }
+                
+                Spacer()
+                
+                Stepper("\(reps)", value: $reps).fixedSize()
                    
             }
         }
