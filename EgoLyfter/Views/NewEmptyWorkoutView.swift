@@ -11,6 +11,7 @@ struct NewEmptyWorkoutView: View {
    
     @StateObject var viewModel = NewEmptyWorkoutViewModel()
     @Binding var showingEmptyWorkoutView: Bool
+    @State var isShowingAlert: Bool = false
     
     
     
@@ -88,11 +89,22 @@ struct NewEmptyWorkoutView: View {
                         ToolbarItem(placement: .navigationBarTrailing){
                             Button("Finish"){
                                 //save workout
-                                
-                                showingEmptyWorkoutView = false
-                                
-                                
+                                isShowingAlert = true
+                               // showingEmptyWorkoutView = false
                             }.buttonStyle(BorderedButtonStyle())
+                                .alert("Finish Workout?", isPresented: $isShowingAlert){
+                                    Button("Yes"){
+                                        //attempt save and exit
+                                        isShowingAlert = !viewModel.saveWorkout()
+                                        if !isShowingAlert {
+                                            showingEmptyWorkoutView = false
+                                        }
+                                        
+                                    }
+                                    Button("Not yet"){
+                                        isShowingAlert = false
+                                    }
+                                }
                         }
                     
                     //maybe bottome toolbar

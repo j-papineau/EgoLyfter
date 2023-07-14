@@ -4,7 +4,8 @@
 //
 //  Created by Joel on 7/8/23.
 //
-
+import FirebaseAuth
+import FirebaseFirestore
 import Foundation
 
 class NewEmptyWorkoutViewModel: ObservableObject {
@@ -68,6 +69,56 @@ class NewEmptyWorkoutViewModel: ObservableObject {
         let time = hoursString + ":" + minsString + ":" + secsString
         
         return time
+        
+    }
+    
+    
+    func saveWorkout() -> Bool {
+        
+        //let savable:Bool = canSave()
+        
+//        //check validation
+//        guard savable else{
+//            print("error")
+//            return false
+//        }
+//
+//        //verify user id
+//        guard let uId = Auth.auth().currentUser?.uid else {
+//            print("error")
+//            return false
+//        }
+//
+//        //create model
+//        let newId = UUID().uuidString
+//        let date = Date()
+//
+//        let newItem = EmptyWorkout(id: newId, created: date.timeIntervalSince1970, duration: stopwatch, title: workoutTitle, movementCount: movementCount)
+//
+//        let db = Firestore.firestore()
+//
+//        db.collection("users")
+//            .document(uId)
+//            .collection("Workout_History")
+//            .document(newId)
+//            .setData(newItem.asDictionary())
+        
+        for movement in movements {
+            movement.viewModel.save()
+        }
+        
+        return true
+        
+        
+        
+        
+        
+    }
+    
+    func canSave() -> Bool {
+        
+        //check and validate data
+        return true //dummy for now
         
     }
     

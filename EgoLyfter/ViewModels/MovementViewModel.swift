@@ -32,5 +32,12 @@ class MovementViewModel: ObservableObject, Identifiable {
         
     }
     
+    func save() {
+        //will create viewModel from here
+       // print(self.exerciseTitle)
+        print(String(setCount))
+        print(exerciseTitle)
+        
+    }
     
 }

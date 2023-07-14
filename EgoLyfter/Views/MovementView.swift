@@ -35,6 +35,8 @@ struct MovementView: View, Identifiable{
                 Button("Add Set"){
                     
                     viewModel.addSet()
+                    viewModel.save()
+                  //  print(viewModel.exerciseTitle)
                     
                 }.buttonStyle(.borderedProminent)
                

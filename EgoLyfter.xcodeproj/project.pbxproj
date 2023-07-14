@@ -12,6 +12,7 @@
 		5D224D842A5BBE0F00CC4109 /* MovementSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D224D832A5BBE0F00CC4109 /* MovementSetView.swift */; };
 		5D224D862A5BBE2D00CC4109 /* MovementSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D224D852A5BBE2D00CC4109 /* MovementSetViewModel.swift */; };
 		5D224D882A5D115900CC4109 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D224D872A5D115900CC4109 /* SegmentedControlView.swift */; };
+		5D2B54812A6117AB00794A92 /* EmptyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2B54802A6117AB00794A92 /* EmptyWorkout.swift */; };
 		5D44B42C2A4CB647002120E3 /* EgoLyfterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44B42B2A4CB647002120E3 /* EgoLyfterApp.swift */; };
 		5D44B42E2A4CB647002120E3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44B42D2A4CB647002120E3 /* MainView.swift */; };
 		5D44B4302A4CB648002120E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D44B42F2A4CB648002120E3 /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		5D224D832A5BBE0F00CC4109 /* MovementSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSetView.swift; sourceTree = "<group>"; };
 		5D224D852A5BBE2D00CC4109 /* MovementSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSetViewModel.swift; sourceTree = "<group>"; };
 		5D224D872A5D115900CC4109 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
+		5D2B54802A6117AB00794A92 /* EmptyWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWorkout.swift; sourceTree = "<group>"; };
 		5D44B4282A4CB647002120E3 /* EgoLyfter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EgoLyfter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D44B42B2A4CB647002120E3 /* EgoLyfterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgoLyfterApp.swift; sourceTree = "<group>"; };
 		5D44B42D2A4CB647002120E3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				5D44B4A12A538E03002120E3 /* WorkoutListItem.swift */,
 				5D7A4B752A56F5AD0052CD7F /* CutomWorkout.swift */,
 				5D7A4B772A57C6BE0052CD7F /* Exercise.swift */,
+				5D2B54802A6117AB00794A92 /* EmptyWorkout.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				5D44B4892A4E8C42002120E3 /* ProfileViewModel.swift in Sources */,
 				5D44B4852A4E8C1E002120E3 /* WorkoutListViewModel.swift in Sources */,
 				5D7A4B802A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift in Sources */,
+				5D2B54812A6117AB00794A92 /* EmptyWorkout.swift in Sources */,
 				5D44B4952A4F7D5A002120E3 /* FormButton.swift in Sources */,
 				5D44B4A62A548976002120E3 /* HistoryView.swift in Sources */,
 				5D44B4AE2A54F369002120E3 /* WorkoutEditorView.swift in Sources */,
