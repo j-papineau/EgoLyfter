@@ -10,15 +10,15 @@ import SwiftUI
 struct MovementView: View, Identifiable{
     
     var id: Int
-    @StateObject var viewModel: MovementViewModel
+    @Binding var viewModel: MovementViewModel
+    @Binding var movement:Movement
+
     
-   // var exercises = [ExerciseSetView(id: 0, weight: "155", reps: 12),
-//                     ExerciseSetView(id: 1, weight: "165", reps: 11),
-//                     ExerciseSetView(id: 2, weight: "165", reps: 11)]
-    
-    init(id:Int){
-        self.id = id
-        self._viewModel = StateObject(wrappedValue: MovementViewModel(id: id))
+    init(movement: Binding<Movement>){
+        self.id = movement.id
+        self._movement = movement
+        self._viewModel = movement.viewModel
+       
     }
     
     var body: some View {
@@ -35,7 +35,6 @@ struct MovementView: View, Identifiable{
                 Button("Add Set"){
                     
                     viewModel.addSet()
-                    viewModel.save()
                   //  print(viewModel.exerciseTitle)
                     
                 }.buttonStyle(.borderedProminent)
@@ -52,8 +51,8 @@ struct MovementView: View, Identifiable{
             }//table titles
             
             
-            List(viewModel.sets) { item in
-                ExerciseSetView(id: item.id, weight: item.weight, reps: item.reps)
+            List($viewModel.sets) { item in
+                ExerciseSetView(setData: item)
             }.listStyle(.plain)
                 .scrollIndicators(.visible)
             
@@ -72,6 +71,6 @@ struct MovementView: View, Identifiable{
 
 struct MovementView_Previews: PreviewProvider {
     static var previews: some View {
-        MovementView(id: 1)
+        MovementView(movement: Binding.constant(Movement(id: 0, title: "Title", setCount: 1, sets: [], weight: "225", viewModel: MovementViewModel(id: 0))))
     }
 }

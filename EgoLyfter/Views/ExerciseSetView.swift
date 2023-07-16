@@ -8,11 +8,9 @@
 import SwiftUI
 import Combine
 
-struct ExerciseSetView: View, Identifiable {
+struct ExerciseSetView: View {
     //id for set needs to be handled
-    var id: Int
-    @State var weight:String
-    @State var reps: Int
+    @Binding var setData:MovementSet
     
     var body: some View {
         VStack{
@@ -21,7 +19,7 @@ struct ExerciseSetView: View, Identifiable {
             HStack{
                
                 
-                Text("\(id + 1)").font(.headline).fontWeight(.heavy).multilineTextAlignment(.center)
+                Text("\(setData.id + 1)").font(.headline).fontWeight(.heavy).multilineTextAlignment(.center)
                     .onTapGesture {
                             self.hideKeyboard()
                         }
@@ -29,12 +27,12 @@ struct ExerciseSetView: View, Identifiable {
                 Spacer()
                 
                 
-                TextField("", text: $weight)
+                TextField("", text: $setData.weight)
                     .keyboardType(.numberPad)
-                    .onReceive(Just(weight)){newValue in
+                    .onReceive(Just(setData.weight)){newValue in
                         let filtered = newValue.filter {"01234567890".contains($0)}
                         if filtered != newValue{
-                            self.weight = filtered
+                            self.setData.weight = filtered
                         }
                     }
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -51,7 +49,7 @@ struct ExerciseSetView: View, Identifiable {
                 
                 Spacer()
                 
-                Stepper("\(reps)", value: $reps).fixedSize()
+                Stepper("\(setData.repCount)", value: $setData.repCount).fixedSize()
                    
             }
         }
@@ -62,6 +60,6 @@ struct ExerciseSetView: View, Identifiable {
 
 struct ExerciseSetView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseSetView(id:2,weight: "182", reps: 12)
+        ExerciseSetView(setData:Binding.constant(MovementSet(id: 1, repCount: 2, weight: "225")))
     }
 }

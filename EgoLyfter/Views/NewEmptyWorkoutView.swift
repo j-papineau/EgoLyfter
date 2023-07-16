@@ -12,7 +12,9 @@ struct NewEmptyWorkoutView: View {
     @StateObject var viewModel = NewEmptyWorkoutViewModel()
     @Binding var showingEmptyWorkoutView: Bool
     @State var isShowingAlert: Bool = false
+    @State var isShowingFinishedScreen = false
     
+  
     
     
     
@@ -22,24 +24,16 @@ struct NewEmptyWorkoutView: View {
         NavigationView{
             
             VStack{
+
+                List{
+
+                    ForEach($viewModel.movements){movement in
+                        MovementView(movement: movement)
+                    }
+                }.listStyle(.plain)
                
-                List(viewModel.movements){movement in
-                    
-                    MovementView(id: movement.id)
-                      //.frame(height: 230)
-                        //.aspectRatio(contentMode: .fit)
-                   // Spacer()
-                    
-                }
-                .listStyle(.plain)
-               
-                
-                
-                
+
                 Spacer()
-                
-                
-                
                 
                 HStack{
                     Button{
@@ -54,18 +48,18 @@ struct NewEmptyWorkoutView: View {
                     .buttonStyle(.bordered)
                     .padding(.leading, 15)
                     
-                        Spacer()
+                   //     Spacer()
                     
-                    Button{
-                            //add cadio log
-                    } label: {
-                        HStack{
-                            Image(systemName: "plus")
-                            Text("Add Cardio Log")
-                        }
-                    }
-                        .buttonStyle(.bordered)
-                        .padding(.trailing, 15)
+//                    Button{
+//                            //add cadio log
+//                    } label: {
+//                        HStack{
+//                            Image(systemName: "plus")
+//                            Text("Add Cardio Log")
+//                        }
+//                    }
+//                        .buttonStyle(.bordered)
+//                        .padding(.trailing, 15)
                 }
             }
             
@@ -97,7 +91,8 @@ struct NewEmptyWorkoutView: View {
                                         //attempt save and exit
                                         isShowingAlert = !viewModel.saveWorkout()
                                         if !isShowingAlert {
-                                            showingEmptyWorkoutView = false
+                                            //show finish screen
+                                            isShowingFinishedScreen = true
                                         }
                                         
                                     }
@@ -106,10 +101,17 @@ struct NewEmptyWorkoutView: View {
                                     }
                                 }
                         }
-                    
-                    //maybe bottome toolbar
-                    
                 }
+        }
+        .sheet(isPresented: $isShowingFinishedScreen , onDismiss: {
+            showingEmptyWorkoutView = false
+        }) {
+            //finished workout view
+            
+            let sets = viewModel.getSetsCompleted()
+            let totalWeight = viewModel.getTotalWeight()
+            
+            WorkoutFinishedView(title: viewModel.workoutTitle, exerciseCount: viewModel.movementCount, sets: sets, duration: viewModel.stopwatch, totalWeight: totalWeight)
             
         }
     }

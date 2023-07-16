@@ -14,7 +14,7 @@ class NewEmptyWorkoutViewModel: ObservableObject {
     @Published var timeElapsed: Int = 0
     @Published var stopwatch: String = "00:00:00"
     @Published var workoutTitle = "New Workout"
-    @Published var movements:[MovementView] = []
+    @Published var movements:[Movement] = []
     @Published var movementCount:Int = 0
     
     
@@ -29,7 +29,7 @@ class NewEmptyWorkoutViewModel: ObservableObject {
     
     func addMovement() -> Void {
         
-        movements.append(MovementView(id: movementCount))
+        movements.append(Movement(id: movementCount, title: "New Exercise", setCount: 0, sets: [], weight: "69", viewModel: MovementViewModel(id: movementCount)))
         movementCount += 1
         
     }
@@ -75,6 +75,18 @@ class NewEmptyWorkoutViewModel: ObservableObject {
     
     func saveWorkout() -> Bool {
         
+        //print data to console for testing
+//        print("Workout Title: " + workoutTitle)
+//        print("Duration: " + stopwatch)
+//        print("Number of Exercises: " + String(movementCount))
+//        print("- - - - - - - -")
+//
+//        for movement in movements {
+//
+//            movement.viewModel.save()
+//        }
+//
+        //implement this eventually for validation
         //let savable:Bool = canSave()
         
 //        //check validation
@@ -84,28 +96,35 @@ class NewEmptyWorkoutViewModel: ObservableObject {
 //        }
 //
 //        //verify user id
-//        guard let uId = Auth.auth().currentUser?.uid else {
-//            print("error")
-//            return false
-//        }
-//
-//        //create model
-//        let newId = UUID().uuidString
-//        let date = Date()
-//
-//        let newItem = EmptyWorkout(id: newId, created: date.timeIntervalSince1970, duration: stopwatch, title: workoutTitle, movementCount: movementCount)
-//
-//        let db = Firestore.firestore()
-//
-//        db.collection("users")
-//            .document(uId)
-//            .collection("Workout_History")
-//            .document(newId)
-//            .setData(newItem.asDictionary())
-        
-        for movement in movements {
-            movement.viewModel.save()
+        guard let uId = Auth.auth().currentUser?.uid else {
+            print("error")
+            return false
         }
+
+        //create model
+        let newId = UUID().uuidString
+        let date = Date()
+
+        let newItem = EmptyWorkout(id: newId, created: date.timeIntervalSince1970, duration: stopwatch, title: workoutTitle, movementCount: movementCount)
+
+        let db = Firestore.firestore()
+
+        db.collection("users")
+            .document(uId)
+            .collection("Workout_History")
+            .document(newId)
+            .setData(newItem.asDictionary())
+        
+        //save movements
+        for movement in movements {
+            movement.viewModel.saveMovement(uId: uId, workoutId: newId)
+        }
+        //save sets in movements
+        for movement in movements{
+            movement.viewModel.saveSets(uId: uId, workoutId: newId)
+        }
+        
+       
         
         return true
         
@@ -122,5 +141,27 @@ class NewEmptyWorkoutViewModel: ObservableObject {
         
     }
     
+    func getTotalWeight() -> Int {
+        
+        var runningTotal: Int = 0
+        
+        for movement in movements {
+            let movementTotal = Int(movement.viewModel.getTotalWeight())
+            runningTotal += movementTotal
+        }
+        
+        return runningTotal
+    }
+    
+    func getSetsCompleted() -> Int {
+        
+        var runningTotal: Int = 0
+        
+        for movement in movements {
+            runningTotal += movement.viewModel.setCount
+        }
+        
+        return runningTotal
+    }
     
 }

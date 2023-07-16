@@ -139,7 +139,8 @@ struct WorkoutListView: View {
             }.sheet(isPresented: $viewModel.showingNewWorkoutView){
                 NewWorkoutView(newWorkoutPresented: $viewModel.showingNewWorkoutView)
             }.fullScreenCover(isPresented: $viewModel.showingWorkoutEditor){
-                WorkoutEditorView(userId: userId, listId: viewModel.workoutEditorId, showingWorkoutEditor: $viewModel.showingWorkoutEditor)
+                //workout editor
+                WorkoutEditorView()
                 
             }.fullScreenCover(isPresented: $viewModel.showingEmptyWorkoutView){
                 NewEmptyWorkoutView(showingEmptyWorkoutView: $viewModel.showingEmptyWorkoutView)
