@@ -14,6 +14,7 @@ struct NewEmptyWorkoutView: View {
     @State var isShowingAlert: Bool = false
     @State var isShowingFinishedScreen = false
     
+    
   
     
     
@@ -110,8 +111,9 @@ struct NewEmptyWorkoutView: View {
             
             let sets = viewModel.getSetsCompleted()
             let totalWeight = viewModel.getTotalWeight()
+            let duration = viewModel.stopwatch
             
-            WorkoutFinishedView(title: viewModel.workoutTitle, exerciseCount: viewModel.movementCount, sets: sets, duration: viewModel.stopwatch, totalWeight: totalWeight)
+            WorkoutFinishedView(title: viewModel.workoutTitle, exerciseCount: viewModel.movementCount, sets: sets, duration: duration, totalWeight: totalWeight)
             
         }
     }

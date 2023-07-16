@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct EmptyWorkout: Codable {
+struct EmptyWorkout: Codable, Identifiable {
     
     let id:String
     let created:TimeInterval
     let duration:String
     let title:String
     let movementCount:Int
+    let movements:[DBMovement]
     
     
     

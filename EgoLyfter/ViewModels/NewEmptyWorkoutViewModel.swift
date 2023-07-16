@@ -101,29 +101,49 @@ class NewEmptyWorkoutViewModel: ObservableObject {
             return false
         }
 
-        //create model
+        //prepare model
+        
         let newId = UUID().uuidString
         let date = Date()
+        
+        var movementsDB:[DBMovement] = []
+        
+        for movement in movements {
+            movementsDB.append(movement.viewModel.createDBModel())
+        }
 
-        let newItem = EmptyWorkout(id: newId, created: date.timeIntervalSince1970, duration: stopwatch, title: workoutTitle, movementCount: movementCount)
+        let newItem = EmptyWorkout(id: newId, created: date.timeIntervalSince1970, duration: stopwatch, title: workoutTitle, movementCount: movementCount,movements: movementsDB)
 
         let db = Firestore.firestore()
+        
+        do{
+            try db.collection("users")
+                .document(uId)
+                .collection("Workout_History")
+                .addDocument(from: newItem)
+        }catch{
+            //TODO: actually handle DB errors here
+            print("error writing data.")
+        }
+       
+        
+        
 
-        db.collection("users")
-            .document(uId)
-            .collection("Workout_History")
-            .document(newId)
-            .setData(newItem.asDictionary())
-        
-        //save movements
-        for movement in movements {
-            movement.viewModel.saveMovement(uId: uId, workoutId: newId)
-        }
-        //save sets in movements
-        for movement in movements{
-            movement.viewModel.saveSets(uId: uId, workoutId: newId)
-        }
-        
+//        db.collection("users")
+//            .document(uId)
+//            .collection("Workout_History")
+//            .document(newId)
+//            .setData(newItem.asDictionary())
+//
+//        //save movements
+//        for movement in movements {
+//            movement.viewModel.saveMovement(uId: uId, workoutId: newId)
+//        }
+//        //save sets in movements
+//        for movement in movements{
+//            movement.viewModel.saveSets(uId: uId, workoutId: newId)
+//        }
+//
        
         
         return true

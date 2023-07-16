@@ -19,7 +19,8 @@ struct WorkoutListView: View {
     @StateObject var viewModel: WorkoutListViewModel
     @FirestoreQuery var items: [WorkoutListItem]
     @State var showingWorkout: Bool = false
-    @State var segmentSelection: ListSection = .templates
+    @State private var mode: Int = 0
+   
     
     private var userId: String
     
@@ -41,98 +42,103 @@ struct WorkoutListView: View {
                     //gotta get the value from here
                   
                    //top selection thing
-                    Picker("", selection: $segmentSelection){
-                        ForEach(ListSection.allCases, id: \.self){option in
-                            Text(option.rawValue)
-                        }
-                    }.pickerStyle(SegmentedPickerStyle())
-                        .padding()
+                  
                     
                     
                     NavigationView {
                         
                         
-                        List(items) {item in
-                                
+                        if mode == 0{ List(items) {item in
+                            
+                            HStack {
                                 HStack {
+                                    WorkoutListItemView(item: item)
+                                        .swipeActions{
+                                            Button("Delete"){
+                                                viewModel.delete(id: item.id)
+                                            }.foregroundColor(Color.red)
+                                        }.tint(.red)
                                     
-                                    
-                                   // NavigationLink(destination: WorkoutEditorView(listId: item.id)){
+                                    HStack(spacing: 30){
                                         
-                                    HStack {
-                                            WorkoutListItemView(item: item)
-                                                .swipeActions{
-                                                    Button("Delete"){
-                                                        viewModel.delete(id: item.id)
-                                                    }.foregroundColor(Color.red)
-                                            }.tint(.red)
+                                        Button{
+                                            //open editor
+                                            viewModel.showingWorkoutEditor = true
+                                            viewModel.workoutEditorId = item.id
+                                            print("editor on id:" + item.id)
+                                            
+                                            
+                                        }label: {
+                                            Image(systemName: "square.and.pencil")
+                                        }.buttonStyle(.plain)
                                         
-                                        HStack(spacing: 30){
-                                            
-                                            Button{
-                                                //open editor
-                                                
-                                                
-                                                viewModel.showingWorkoutEditor = true
-                                                viewModel.workoutEditorId = item.id
-                                                print("editor on id:" + item.id)
-                                                
-                                                
-                                            }label: {
-                                                Image(systemName: "square.and.pencil")
-                                            }.buttonStyle(.plain)
-                                            
-                                            
-                                            Button{
-                                                //play workout
-                                                print("playing workout:" + item.id)
-                                                
-                                            } label: {
-                                                
-                                                
-                                                Image(systemName: "play")
-                                            }.buttonStyle(.plain)
-                                        }
                                         
+                                        Button{
+                                            //play workout
+                                            print("playing workout:" + item.id)
                                             
-                                        }//end hstack
-                                //    }//end navlink
-                                }
+                                        } label: {
+                                            
+                                            
+                                            Image(systemName: "play")
+                                        }.buttonStyle(.plain)
+                                    }
+                                }//end hstack
                             }
+                        }//end list
                         .listStyle(InsetListStyle())
+                        }
+                        
+                        else{
+                            HistoryView(userId: userId)
+                        }
+                        
+                        
                     }
                 }
                    // .listStyle(PlainListStyle())
-                
-                
             }
-            .navigationTitle("Home")
+            .navigationTitle("Home").navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 
-                Menu{
+               
+                               ToolbarItem(placement: .principal) {
+                                   Picker("Color", selection: $mode) {
+                                       Text("Templates").tag(0)
+                                       Text("History").tag(1)
+                                   }
+                                   .pickerStyle(SegmentedPickerStyle())
+                               }
+                           
+                
+                ToolbarItem{
+                    Menu{
                         
                         Button{
-                          //add new
+                            //add new
                             //new template
                             viewModel.showingNewWorkoutView = true
                         }label:{
                             Text("New Template").foregroundColor(Color("DemonRedLight"))
                         }
-                    
-                        
-                    Button("Start Empty Workout"){
-                        
-                        //start empty workout (duh)
-                        
-                        viewModel.showingEmptyWorkoutView = true
                         
                         
+                        Button("Start Empty Workout"){
+                            
+                            //start empty workout (duh)
+                            
+                            viewModel.showingEmptyWorkoutView = true
+                            
+                            
+                            
+                        }.buttonStyle(BorderedButtonStyle())
                         
-                    }.buttonStyle(BorderedButtonStyle())
-                        
-                } label: {
-                    Image(systemName: "plus")
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 }
+                
+               
                     
                 
                 

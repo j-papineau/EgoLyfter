@@ -14,6 +14,4 @@ struct MovementSet: Identifiable, Codable {
     var repCount: Int = 12
     var weight: String = ""
     
-    
-    
 }

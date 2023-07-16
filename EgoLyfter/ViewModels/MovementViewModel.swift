@@ -52,23 +52,29 @@ class MovementViewModel: ObservableObject, Identifiable {
     }
     
     //creates documents in FB for each movement
-    func saveMovement(uId:String, workoutId:String){
+//    func saveMovement(uId:String, workoutId:String){
+//        
+//        //create model
+//        
+//        let item = DBMovement(id: String(id), title: exerciseTitle, setCount: setCount)
+//        
+//        let db = Firestore.firestore()
+//        
+//        db.collection("users")
+//            .document(uId)
+//            .collection("Workout_History")
+//            .document(workoutId)
+//            .collection("Movements")
+//            .document(String(id))
+//            .setData(item.asDictionary())
+//        
+//        
+//    }
+    
+    func createDBModel() -> DBMovement{
         
-        //create model
-        
-        let item = DBMovement(id: String(id), title: exerciseTitle, setCount: setCount)
-        
-        let db = Firestore.firestore()
-        
-        db.collection("users")
-            .document(uId)
-            .collection("Workout_History")
-            .document(workoutId)
-            .collection("Movements")
-            .document(String(id))
-            .setData(item.asDictionary())
-        
-        
+        let newItem = DBMovement(id: id, title: exerciseTitle, setCount: setCount, sets: sets)
+        return newItem
     }
     
     func saveSets(uId:String, workoutId:String){

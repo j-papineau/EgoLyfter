@@ -9,8 +9,9 @@ import Foundation
 
 struct DBMovement: Identifiable, Codable {
     
-    var id: String
+    var id: Int
     var title: String
     var setCount: Int
+    var sets:[MovementSet]
     
 }

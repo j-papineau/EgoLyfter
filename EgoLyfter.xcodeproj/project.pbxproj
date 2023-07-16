@@ -59,6 +59,7 @@
 		5D7A4B7C2A585B2D0052CD7F /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B7B2A585B2D0052CD7F /* ToolbarButton.swift */; };
 		5D7A4B7E2A59222A0052CD7F /* NewEmptyWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B7D2A59222A0052CD7F /* NewEmptyWorkoutView.swift */; };
 		5D7A4B802A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A4B7F2A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift */; };
+		5D95E86E2A64819F00E5FC72 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D95E86D2A64819F00E5FC72 /* HistoryViewModel.swift */; };
 		5DD4E5432A63517E00333F01 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4E5422A63517E00333F01 /* Movement.swift */; };
 		5DD4E5472A63A77D00333F01 /* MovementSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4E5462A63A77D00333F01 /* MovementSet.swift */; };
 		5DD4E5492A63B0E000333F01 /* DBMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4E5482A63B0E000333F01 /* DBMovement.swift */; };
@@ -115,6 +116,7 @@
 		5D7A4B7B2A585B2D0052CD7F /* ToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButton.swift; sourceTree = "<group>"; };
 		5D7A4B7D2A59222A0052CD7F /* NewEmptyWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmptyWorkoutView.swift; sourceTree = "<group>"; };
 		5D7A4B7F2A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmptyWorkoutViewModel.swift; sourceTree = "<group>"; };
+		5D95E86D2A64819F00E5FC72 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		5DD4E5422A63517E00333F01 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		5DD4E5462A63A77D00333F01 /* MovementSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSet.swift; sourceTree = "<group>"; };
 		5DD4E5482A63B0E000333F01 /* DBMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBMovement.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				5D7A4B7F2A59236A0052CD7F /* NewEmptyWorkoutViewModel.swift */,
 				5D224D7F2A5BB9A800CC4109 /* MovementViewModel.swift */,
 				5D224D852A5BBE2D00CC4109 /* MovementSetViewModel.swift */,
+				5D95E86D2A64819F00E5FC72 /* HistoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				5D7A4B782A57C6BE0052CD7F /* Exercise.swift in Sources */,
 				5D44B42E2A4CB647002120E3 /* MainView.swift in Sources */,
 				5D7A4B7C2A585B2D0052CD7F /* ToolbarButton.swift in Sources */,
+				5D95E86E2A64819F00E5FC72 /* HistoryViewModel.swift in Sources */,
 				5D44B4712A4E8B38002120E3 /* ProfileView.swift in Sources */,
 				5DD4E5492A63B0E000333F01 /* DBMovement.swift in Sources */,
 				5D44B49F2A511FCB002120E3 /* SearchView.swift in Sources */,
