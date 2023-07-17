@@ -20,7 +20,6 @@ struct WorkoutListView: View {
     @FirestoreQuery var items: [WorkoutListItem]
     @State var showingWorkout: Bool = false
     @State private var mode: Int = 0
-   
     
     private var userId: String
     
@@ -39,12 +38,7 @@ struct WorkoutListView: View {
             VStack{
                
                 VStack {
-                    //gotta get the value from here
-                  
-                   //top selection thing
-                  
-                    
-                    
+ 
                     NavigationView {
                         
                         

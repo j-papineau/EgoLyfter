@@ -12,6 +12,7 @@ struct HistoryView: View {
     private var userId: String
     @FirestoreQuery var items: [EmptyWorkout]
     @StateObject var viewModel: HistoryViewModel
+    @State var loadWorkout:Bool = false
     
     init(userId: String){
         self.userId = userId
@@ -27,17 +28,26 @@ struct HistoryView: View {
             VStack{
                 List(items){item in
                     NavigationLink{
-                        HistoryDetailView(workout: item)
+                        HistoryDetailView(workout: item, loadWorkout: $loadWorkout)
                     }label: {
-                        VStack(alignment: .center){
+                        VStack{
                             Text(item.title)
                             Text(convDate(input: Date(timeIntervalSince1970: item.created))).font(.caption).italic()
                         }
                     }
                     
-                }.listStyle(.sidebar)
+                }.listStyle(.plain)
+                   
+            } .padding(.top, -50)
+        }.fullScreenCover(isPresented: $loadWorkout){
+            VStack{
+                Text("workout will go here")
+                FormButton(title: "Leave", bgColor: Color.red){
+                    loadWorkout = false
+                }
             }
-        }
+           
+        }//end fullscreen cover
     }
     
     

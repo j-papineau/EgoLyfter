@@ -11,10 +11,14 @@ struct HistoryDetailView: View {
     
     var workout: EmptyWorkout
     @StateObject var viewModel: HistoryDetailViewModel
+    @State var isPresentingAlert:Bool = false
+    @Binding var loadWorkout:Bool
+    @Environment(\.presentationMode) var presentation
     
-    init(workout:EmptyWorkout){
+    init(workout:EmptyWorkout, loadWorkout:Binding<Bool>){
         self.workout = workout
         self._viewModel = StateObject(wrappedValue: HistoryDetailViewModel(workout: workout))
+        self._loadWorkout = loadWorkout
     }
     
     var body: some View {
@@ -62,6 +66,16 @@ struct HistoryDetailView: View {
             FormButton(title: "Run It Again", bgColor: Color.green){
                 //load this workout as a template in empty view
                 print("go again")
+                isPresentingAlert = true
+                
+            }.alert("Do this workout again?", isPresented: $isPresentingAlert){
+                Button("Yes"){
+                    self.presentation.wrappedValue.dismiss()
+                    loadWorkout = true
+                }
+                Button("No"){
+                    
+                }
             }
             
         }
@@ -78,6 +92,6 @@ struct HistoryDetailView_Previews: PreviewProvider {
             MovementSet(id: 0, repCount: 15, weight: "25"),
             MovementSet(id: 1, repCount: 14, weight: "25")])
         ]
-        ))
+                                               ), loadWorkout: Binding.constant(false))
     }
 }
