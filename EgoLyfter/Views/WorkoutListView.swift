@@ -89,7 +89,7 @@ struct WorkoutListView: View {
                         .listStyle(InsetListStyle())
                         }
                         
-                        else{
+                        else if mode == 1{
                             HistoryView(userId: userId)
                         }
                         

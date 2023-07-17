@@ -29,9 +29,23 @@ struct ProfileView: View {
                         List{
                             Text("Something").foregroundColor(Color.black)
                         }
+                        
                         FormButton(title: "Log Out", bgColor: Color("DemonRedLight")){
                             viewModel.logOut()
                         }
+                        
+                        VStack{
+                            Text("Your Stats").font(.system(size: 30))
+                            
+                            List{
+                                
+                                    Text("Workouts Completed:")
+                                    
+                                
+                            }.listStyle(.plain)
+                            
+                        }//stats viewed
+                        
                     }else{
                         //loading state
                         Spacer()

@@ -22,16 +22,20 @@ struct HistoryView: View {
     }
     
     var body: some View {
-        VStack{
-            List(items){item in
-                VStack{
-                    Text(item.title)
-                    let date = Date(timeIntervalSince1970: item.created)
-                    let dateString = convDate(input: date)
+        
+        NavigationView {
+            VStack{
+                List(items){item in
+                    NavigationLink{
+                        HistoryDetailView(workout: item)
+                    }label: {
+                        VStack(alignment: .center){
+                            Text(item.title)
+                            Text(convDate(input: Date(timeIntervalSince1970: item.created))).font(.caption).italic()
+                        }
+                    }
                     
-                    Text(dateString).font(.caption2)
-                }
-                
+                }.listStyle(.sidebar)
             }
         }
     }
